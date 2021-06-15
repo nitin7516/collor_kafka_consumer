@@ -1,5 +1,5 @@
 applications:
   - name: producer
     random-route: true
-    memory: 256M
-    command: python producer.py
+    memory: 128M
+    command: python consumer.py
