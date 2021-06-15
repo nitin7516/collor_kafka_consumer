@@ -1,0 +1,5 @@
+applications:
+  - name: producer
+    random-route: true
+    memory: 256M
+    command: python producer.py
