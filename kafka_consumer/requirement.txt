@@ -1,0 +1,5 @@
+requests
+confluent_kafka
+asyncio
+python-dotenv
+Flask
