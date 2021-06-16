@@ -50,8 +50,14 @@ def consume_json():
    run_tasks(opts, run_consumer, consumer)
    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
    json_url = os.path.join(SITE_ROOT, "coordinates.json")
-   data = json.load(open(json_url))
-   return jsonify(data) #render_template('showjson.jade', data=data)
+   #data = json.load(open(json_url))
+   with open(json_url) as file:
+       data = json.load(f)
+
+   jsondata = []
+   for row in data['rows']:
+   	jsondata.append({'name': result_row[0], 'count' : result_row[1],})
+   return jsonify(jsondata) #render_template('showjson.jade', data=data)
 
 
 async def run_tasks(opts, run_consumer, consumer):
