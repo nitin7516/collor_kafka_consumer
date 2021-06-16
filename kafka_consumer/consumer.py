@@ -54,6 +54,7 @@ def consume_json():
    with open(json_url) as file:
        data = json.load(file)
    print(data)
+   print("***************",os.path)
    return jsonify(data) #render_template('showjson.jade', data=data)
 
 
