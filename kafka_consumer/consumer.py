@@ -31,8 +31,8 @@ def consume_json():
    print('API_KEY: {0}'.format(opts['api_key']))
 
    if any(k not in opts for k in ('brokers', 'rest_endpoint', 'api_key')):
-   print('Error - Failed to retrieve options. Check that app is bound to an Event Streams service or that command line options are correct.')
-   sys.exit(-1)
+   	print('Error - Failed to retrieve options. Check that app is bound to an Event Streams service or that command line options are correct.')
+   	sys.exit(-1)
 
    # Use Event Streams' REST admin API to create the topic
    # with 1 partition and a retention period of 24 hours.
