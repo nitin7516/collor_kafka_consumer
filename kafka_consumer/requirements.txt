@@ -3,3 +3,4 @@ confluent_kafka
 asyncio
 python-dotenv
 Flask
+kafka-python
