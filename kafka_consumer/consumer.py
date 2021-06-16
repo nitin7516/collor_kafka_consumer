@@ -54,9 +54,6 @@ def consume_json():
    with open(json_url) as file:
        data = json.load(file)
 
-   jsondata = []
-   for row in data['rows']:
-   	jsondata.append({'name': result_row[0], 'count' : result_row[1],})
    return jsonify(jsondata) #render_template('showjson.jade', data=data)
 
 
