@@ -53,7 +53,7 @@ def consume_json():
    #data = json.load(open(json_url))
    with open(json_url) as file:
        data = json.load(file)
-
+   print(data)
    return jsonify(data) #render_template('showjson.jade', data=data)
 
 
