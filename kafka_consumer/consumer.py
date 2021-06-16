@@ -77,7 +77,7 @@ async def run_tasks(opts, run_consumer, consumer):
 
   if run_consumer:
       consumer = consumertask.ConsumerTask(consumer_opts, opts['topic_name'])
-		 consumer.run()
+      consumer.run()
       tasks.append(asyncio.ensure_future(consumer.run()))
 
 if __name__ == '__main__':
