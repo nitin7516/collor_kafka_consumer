@@ -5,6 +5,7 @@ import sys
 
 import consumertask
 import rest
+import json
 
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify
