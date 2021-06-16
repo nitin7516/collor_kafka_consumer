@@ -52,12 +52,15 @@ def consume_json():
             print("Message consumed new: " + str(msg.value()))
             data = json.loads(msg.value())
             print("data: " + data)
+    
+        yield 'data:{0}\n\n'.format(msg.value().decode())
+    return Response(events(), mimetype="text/event-stream") 
 		
 
 
 
-# if __name__ == '__main__':
-# 	if cf_port is None:
-# 		app.run(host='0.0.0.0', port=5000, debug=True)
-# 	else:
-# 		app.run(host='0.0.0.0', port=int(cf_port), debug=True)
+if __name__ == '__main__':
+	if cf_port is None:
+		app.run(host='0.0.0.0', port=5000, debug=True)
+	else:
+		app.run(host='0.0.0.0', port=int(cf_port), debug=True)
