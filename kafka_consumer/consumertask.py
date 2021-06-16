@@ -12,7 +12,7 @@ class ConsumerTask(object):
     def stop(self):
         self.running = False
 
-    async def run(self):
+    def run(self):
         print('The consumer has started')
         self.consumer.subscribe([self.topic_name])
         while self.running:
