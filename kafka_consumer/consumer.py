@@ -54,7 +54,7 @@ def consume_json():
    with open(json_url) as file:
        data = json.load(file)
 
-   return jsonify(jsondata) #render_template('showjson.jade', data=data)
+   return jsonify(data) #render_template('showjson.jade', data=data)
 
 
 async def run_tasks(opts, run_consumer, consumer):
