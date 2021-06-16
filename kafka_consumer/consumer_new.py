@@ -14,6 +14,10 @@ app = Flask(__name__)
 
 cf_port = os.getenv("PORT")
 
+@app.route('/')
+def root():
+    return render_template('index.html')
+
 @app.route("/consume")
 def consume_json():
     def eventStream():
@@ -55,7 +59,7 @@ def consume_json():
                 print("data: " + data)
         
             yield 'data:{0}\n\n'.format(msg.value().decode())
-        return Response(eventStream(), mimetype='application/json') 
+        return Response(eventStream(), mimetype="text/event-stream") 
 		
 
 
