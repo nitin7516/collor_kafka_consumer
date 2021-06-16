@@ -64,21 +64,21 @@ async def run_tasks(opts, run_consumer, consumer):
     'broker.version.fallback': '0.10.2.1',
     'log.connection.close' : False
   }
- consumer_opts = {
+  consumer_opts = {
     'client.id': 'kafka-python-console-sample-consumer',
     'group.id': 'kafka-python-console-sample-group'
- }
+  }
 
-# Add the common options to consumer and producer
-for key in driver_options:
+  # Add the common options to consumer and producer
+  for key in driver_options:
     consumer_opts[key] = driver_options[key]
 
-tasks = []
+  tasks = []
 
-if run_consumer:
-    consumer = consumertask.ConsumerTask(consumer_opts, opts['topic_name'])
-		consumer.run()
-    tasks.append(asyncio.ensure_future(consumer.run()))
+  if run_consumer:
+      consumer = consumertask.ConsumerTask(consumer_opts, opts['topic_name'])
+		 consumer.run()
+      tasks.append(asyncio.ensure_future(consumer.run()))
 
 if __name__ == '__main__':
 	if cf_port is None:
