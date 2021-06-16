@@ -52,7 +52,7 @@ def consume_json():
    json_url = os.path.join(SITE_ROOT, "coordinates.json")
    #data = json.load(open(json_url))
    with open(json_url) as file:
-       data = json.load(f)
+       data = json.load(file)
 
    jsondata = []
    for row in data['rows']:
