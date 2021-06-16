@@ -36,8 +36,8 @@ def consume_json():
 
    # Use Event Streams' REST admin API to create the topic
    # with 1 partition and a retention period of 24 hours.
-   rest_client = rest.EventStreamsRest(opts['rest_endpoint'], self.opts['api_key'])
-   print('Creating the topic {0} with Admin REST API'.format(self.opts['topic_name']))
+   rest_client = rest.EventStreamsRest(opts['rest_endpoint'], opts['api_key'])
+   print('Creating the topic {0} with Admin REST API'.format(opts['topic_name']))
    response = rest_client.create_topic(opts['topic_name'], 1, 24)
    print(response.text)
 
