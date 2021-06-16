@@ -51,7 +51,7 @@ def consume_json():
    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
    json_url = os.path.join(SITE_ROOT, "coordinates.json")
    data = json.load(open(json_url))
-   return render_template('showjson.jade', data=data)
+   return data #render_template('showjson.jade', data=data)
 
 
 async def run_tasks(opts, run_consumer, consumer):
