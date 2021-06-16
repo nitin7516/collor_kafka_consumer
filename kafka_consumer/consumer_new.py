@@ -55,7 +55,7 @@ def consume_json():
                 print("data: " + data)
         
             yield 'data:{0}\n\n'.format(msg.value().decode())
-        return Response(eventStream(), mimetype="text/event-stream") 
+        return Response(eventStream(), mimetype='application/json') 
 		
 
 
