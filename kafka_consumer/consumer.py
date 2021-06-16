@@ -50,6 +50,7 @@ def consume_json():
    run_tasks(opts, run_consumer, consumer)
    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
    json_url = os.path.join(SITE_ROOT, "coordinates.json")
+   print("*************11**",os.path)
    #data = json.load(open(json_url))
    with open(json_url) as file:
        data = json.load(file)
@@ -58,7 +59,7 @@ def consume_json():
    return jsonify(data) #render_template('showjson.jade', data=data)
 
 
-async def run_tasks(opts, run_consumer, consumer):
+def run_tasks(opts, run_consumer, consumer):
   driver_options = {
     'bootstrap.servers': opts['brokers'],
     'security.protocol': 'SASL_SSL',
@@ -83,7 +84,6 @@ async def run_tasks(opts, run_consumer, consumer):
   if run_consumer:
       consumer = consumertask.ConsumerTask(consumer_opts, opts['topic_name'])
       consumer.run()
-      tasks.append(asyncio.ensure_future(consumer.run()))
 
 if __name__ == '__main__':
 	if cf_port is None:
