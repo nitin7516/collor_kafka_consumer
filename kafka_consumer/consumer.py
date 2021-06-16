@@ -8,7 +8,7 @@ import rest
 import json
 
 from dotenv import load_dotenv
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template, Response
 
 app = Flask(__name__)
 
