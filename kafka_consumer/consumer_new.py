@@ -2,7 +2,7 @@ import asyncio
 import os
 import signal
 import sys
-from confluent_kafka import Consumer
+from pykafka import KafkaClient
 
 import consumertask
 import rest
@@ -46,19 +46,13 @@ def consume_json():
         print('Creating the topic {0} with Admin REST API'.format(opts['topic_name']))
         response = rest_client.create_topic(opts['topic_name'], 1, 24)
         print(response.text)
+	client = KafkaClient(opts)
+	
+	def events():
+	    for i in client.topics[topicname].get_simple_consumer():
+	        yield 'data:{0}\n\n'.format(i.value.decode())
 
-        consumer = Consumer(opts)
-        
-        consumer.subscribe(opts['topic_name'])
-        while True:
-            msg = consumer.poll(1)
-            existingCoordinates = []
-            if msg is not None and msg.error() is None:
-                print("Message consumed new: " + str(msg.value()))
-                data = json.loads(msg.value())
-                print("data: " + data)
-        
-            yield 'data:{0}\n\n'.format(msg.value().decode())
+       
         return Response(eventStream(), mimetype="text/event-stream") 
 		
 
