@@ -16,6 +16,9 @@ cf_port = os.getenv("PORT")
 
 @app.route("/")
 def start_consumer():
+   opts = {}
+   run_consumer = True
+   consumer = None
    load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
    opts['brokers'] = os.getenv("KAFKA_BROKERS_SASL")
    opts['rest_endpoint'] = os.getenv("KAFKA_HTTP_URL")
